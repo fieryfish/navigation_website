@@ -14,3 +14,13 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+*.swp
+*.log
+config/database.yml
+.rvmrc
+.rspec
+*.vim
+tags/*
+tags
+Gemfile.lock
+Gemfile.local
