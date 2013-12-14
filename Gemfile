@@ -7,7 +7,7 @@ gem 'rails', '4.0.2'
 gem 'mysql2'
 
 # Use slim instead of ERB
-gem 'slim'
+gem "slim-rails"
 
 # Use bootstrap as the layout
 gem 'twitter-bootstrap-rails'
