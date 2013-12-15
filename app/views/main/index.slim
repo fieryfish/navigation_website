@@ -1,3 +1,6 @@
-p
-  | No items found.  Please add some inventory.
-  Thank you!
+-if !@tags.blank?
+  -@tags.each do |tag|
+    .row
+      -tag.sites.each do |site|
+        .col-md-1
+          a href=site.url =site.name_chn
