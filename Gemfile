@@ -6,6 +6,12 @@ gem 'rails', '4.0.2'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 
+# Use slim instead of ERB
+gem "slim-rails"
+
+# Use bootstrap as the layout
+gem 'twitter-bootstrap-rails'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
