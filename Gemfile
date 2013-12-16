@@ -9,6 +9,8 @@ gem 'mysql2'
 # Use slim instead of ERB
 gem "slim-rails"
 
+# Use devise for user logging
+gem "devise"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
