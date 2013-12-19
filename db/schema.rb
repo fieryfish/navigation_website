@@ -11,12 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131217151236) do
+ActiveRecord::Schema.define(version: 20131217155630) do
+
+  create_table "link_site_users", force: true do |t|
+    t.integer  "user_id",    default: 0, null: false
+    t.integer  "site_id",    default: 0, null: false
+    t.integer  "ifagree",    default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "link_tag_sites", force: true do |t|
     t.integer  "tag_id",     default: 0, null: false
     t.integer  "site_id",    default: 0, null: false
     t.integer  "rank",       default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "link_tag_users", force: true do |t|
+    t.integer  "user_id",    default: 0, null: false
+    t.integer  "tag_id",     default: 0, null: false
+    t.integer  "ifagree",    default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
