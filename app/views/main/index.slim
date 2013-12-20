@@ -18,11 +18,13 @@ form target="_blank" method="get" action="http://www.google.com/search"
   /<%= hidden_field_tag :voteable, @voteable %>
   /<%= submit_tag :vote %>
 /<% end %>
-
 = form_tag main_index_path, method: "get" do
   = text_field_tag :search, params[:search]
   = submit_tag "Search"
 
+br
+br
+br
 / websites list
 -if !@sites.blank?
   -@sites.each do |site|
