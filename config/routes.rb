@@ -7,6 +7,9 @@ Nav::Application.routes.draw do
    root 'main#index'
 
    get 'main/index'
+   #get 'search_suggestion/index'
+   resources :search_suggestion do
+   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

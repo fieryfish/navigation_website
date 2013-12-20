@@ -12,6 +12,9 @@ gem "slim-rails"
 # Use devise for user logging
 gem "devise"
 
+# Use jquery ui
+gem 'jquery-ui-rails'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
