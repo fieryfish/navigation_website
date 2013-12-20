@@ -1,9 +1,9 @@
 / google and baidu
 form target="_blank" method="get" action="http://www.baidu.com/s"
   input type="text" name="wd"
-  input type="submit" value="搜索"
+  input type="submit" value="百度一下"
 
-form method="get" action="http://www.google.com/search"
+form target="_blank" method="get" action="http://www.google.com/search"
   input type="text" name="q" size="31" maxlength="255" value=""
   input type="submit" value="Google Search"
 /<%= form_tag articles_path, :method => :get do %>
@@ -23,9 +23,15 @@ form method="get" action="http://www.google.com/search"
   = text_field_tag :search, params[:search]
   = submit_tag "Search"
 / websites list
+-if !@sites.blank?
+  -@sites.each do |site|
+    a href=site.url =site.name_chn
+
 -if !@tags.blank?
   -@tags.each do |tag|
     .row
-      -tag.sites.each do |site|
+      =tag.name
+      -sites = tag.sites.limit(6)
+      -sites.each do |site|
         .col-md-1
           a href=site.url =site.name_chn
