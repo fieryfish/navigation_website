@@ -4,6 +4,7 @@ class CreateLinkTagUsers < ActiveRecord::Migration
       t.integer :user_id,        default: 0 , null: false 
       t.integer :tag_id,         default: 0 , null: false
       t.integer :location,       default: 0 , null: false
+      t.integer :like,           default: 0 , null: false
       t.integer :publish_status, default: 0 , null: false # want to log user history of deleted tag
 
       t.timestamps

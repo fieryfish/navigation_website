@@ -6,33 +6,17 @@ form target="_blank" method="get" action="http://www.baidu.com/s"
 form target="_blank" method="get" action="http://www.google.com/search"
   input type="text" name="q" size="31" maxlength="255" value=""
   input type="submit" value="Google Search"
-/<%= form_tag articles_path, :method => :get do %>
-  /<p>
-    /<%= text_field_tag :search, params[:search] %>
-    /<%= submit_tag "Search", :name => nil %>
-/<% end %>
 
-/<%= form_tag user_votes_path(current_user) do |f| %>
-  /<%= radio_button_tag :thumb_direction, :up %>
-  /<%= radio_button_tag :thumb_direction, :down %>
-  /<%= hidden_field_tag :voteable, @voteable %>
-  /<%= submit_tag :vote %>
-/<% end %>
-= form_tag main_index_path, method: "get" do
-  = text_field_tag :search, params[:search]
-  = submit_tag "Search"
-
-br
-br
-br
 / websites list
+
 -if !@sites.blank?
   -@sites.each do |site|
     a href=site.url =site.name_chn
 
+/ tag with sites
 -if !@tags.blank?
   -@tags.each do |tag|
-    .row
+    .row.show-grid
       =tag.name
       -sites = tag.sites.limit(6)
       -sites.each do |site|

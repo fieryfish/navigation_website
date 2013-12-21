@@ -4,6 +4,7 @@ class CreateLinkSiteUsers < ActiveRecord::Migration
       t.integer :user_id,        default: 0 , null: false
       t.integer :site_id,        default: 0 , null: false
       t.integer :location,       default: 0 , null: false
+      t.integer :like,           default: 0 , null: false
       t.integer :publish_status, default: 0 , null: false
 
       t.timestamps
