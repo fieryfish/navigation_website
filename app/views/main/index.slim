@@ -1,43 +1,54 @@
-/ google and baidu
-.container
+- if user_signed_in?
 
-  form target="_blank" method="get" class="navbar-form navbar-left" role="search" action="http://www.baidu.com/s"
-    .form-group
-      input type="text" name="wd" size="40" class="form-control navbar-right" placeholder="输入您要搜索的关键词"
-    /=submit_tag "搜索", class: "btn btn-default"
-    button type="submit" class="btn btn-default" 百度一下
 
-  form target="_blank" method="get" class="navbar-form navbar-right" action="http://www.google.com/search"
-    .form-group
-      input type="text" name="q" size="40" class="form-control" placeholder="输入您要搜索的关键词"
-    button type="submit" class="btn btn-default" 谷歌搜索
-    /input type="submit" value="Google Search"
+- else
+  / google and baidu
+  .container
 
-/ websites list
-.container
-  .sites
-    -left_sites_num = @sites.size % 7
-    /Extra line not include 40 -> 5
-    -line_number = ((@sites.size-1)/7)
-    -line_number.times do |line_num|
+    form target="_blank" method="get" class="navbar-form navbar-left" role="search" action="http://www.baidu.com/s"
+      .form-group
+        input type="text" name="wd" size="40" class="form-control navbar-right" placeholder="输入您要搜索的关键词"
+      /=submit_tag "搜索", class: "btn btn-default"
+      button type="submit" class="btn btn-default" 百度一下
+
+    form target="_blank" method="get" class="navbar-form navbar-right" action="http://www.google.com/search"
+      .form-group
+        input type="text" name="q" size="40" class="form-control" placeholder="输入您要搜索的关键词"
+      button type="submit" class="btn btn-default" 谷歌搜索
+      /input type="submit" value="Google Search"
+
+  / websites list
+  .container
+    .sites
+      -left_sites_num = @main_sites.size % 7
+      /Extra line not include 40 -> 5
+      -line_number = ((@main_sites.size-1)/7)
+      -line_number.times do |line_num|
+        ul class="list-inline"
+          -(0..6).each do |num|
+            -site = @main_sites[num+7*line_num]
+            li class="sitesLi"
+              a<> href=site.url =site.name_chn
+
       ul class="list-inline"
-        -(0..6).each do |num|
-          -site = @sites[num+7*line_num]
+        -(0..(left_sites_num-1)).each do |num|
+          -site = @main_sites[num+7*line_number]
           li class="sitesLi"
-            a href=site.url =site.name_chn
-      #clear-float
+            a> href=site.url =site.name_chn
+            /a href= =site.name_chn
+        #clear-float
 
-/ tag with sites
-.container
-  .tag-sites
-    -if !@tags.blank?
-      -@tags.each do |tag|
-        ul class="tagSitesUi list-inline"
-          li class="tagSitesLi"
-            =tag.name
-            -sites = tag.sites.limit(6)
-            -sites.each do |site|
-              li class="tagSitesLi"
-                a href=site.url =site.name_chn
+          / tag with sites
+  .container
+    .tag-sites
+      -if !@unlogin_tags.blank?
+        -@unlogin_tags.each do |tag|
+          ul class="tagSitesUi list-inline"
+            li class="tagSitesLi"
+              =tag.name
+              -sites = tag.sites.limit(6)
+              -sites.each do |site|
+                li class="tagSitesLi"
+                  a href=site.url =site.name_chn
 
-          #clear-float
+            #clear-float
