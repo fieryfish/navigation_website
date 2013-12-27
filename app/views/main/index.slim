@@ -20,7 +20,7 @@
     /Extra line not include 40 -> 5
     -line_number = ((@sites.size-1)/7)
     -line_number.times do |line_num|
-      ul class="sitesUi"
+      ul class="list-inline"
         -(0..6).each do |num|
           -site = @sites[num+7*line_num]
           li class="sitesLi"
@@ -32,10 +32,12 @@
   .tag-sites
     -if !@tags.blank?
       -@tags.each do |tag|
-        ul class="tagSitesUi"
+        ul class="tagSitesUi list-inline"
           li class="tagSitesLi"
             =tag.name
             -sites = tag.sites.limit(6)
             -sites.each do |site|
               li class="tagSitesLi"
                 a href=site.url =site.name_chn
+
+          #clear-float

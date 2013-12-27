@@ -23,10 +23,14 @@
 }
 
 .tagSitesUi{
+  border-style: groove;
   width: 800px;
 }
 .tagSitesLi{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   width: 100px;
-  height: 50px;
   float: left
 }

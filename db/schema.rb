@@ -14,9 +14,11 @@
 ActiveRecord::Schema.define(version: 20131217155630) do
 
   create_table "link_site_users", force: true do |t|
-    t.integer  "user_id",    default: 0, null: false
-    t.integer  "site_id",    default: 0, null: false
-    t.integer  "ifagree",    default: 0, null: false
+    t.integer  "user_id",        default: 0, null: false
+    t.integer  "site_id",        default: 0, null: false
+    t.integer  "location",       default: 0, null: false
+    t.integer  "like",           default: 0, null: false
+    t.integer  "publish_status", default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,25 +32,24 @@ ActiveRecord::Schema.define(version: 20131217155630) do
   end
 
   create_table "link_tag_users", force: true do |t|
-    t.integer  "user_id",    default: 0, null: false
-    t.integer  "tag_id",     default: 0, null: false
-    t.integer  "ifagree",    default: 0, null: false
+    t.integer  "user_id",        default: 0, null: false
+    t.integer  "tag_id",         default: 0, null: false
+    t.integer  "location",       default: 0, null: false
+    t.integer  "like",           default: 0, null: false
+    t.integer  "publish_status", default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "sites", force: true do |t|
-    t.string   "name_chn",                                  default: "", null: false
-    t.string   "name_eng",                                  default: "", null: false
-    t.string   "url",                                       default: "", null: false
-    t.integer  "publish_status",                            default: 0,  null: false
-    t.string   "seo_name",                                  default: "", null: false
-    t.string   "page_title",                                default: "", null: false
-    t.string   "page_keyowrds",                             default: "", null: false
-    t.text     "page_description"
-    t.string   "phone",                                     default: "", null: false
-    t.integer  "location",                                  default: 0,  null: false
-    t.decimal  "score",            precision: 10, scale: 0, default: 0,  null: false
+    t.string   "name_chn",                                default: "", null: false
+    t.string   "name_eng",                                default: "", null: false
+    t.string   "url",                                     default: "", null: false
+    t.integer  "publish_status",                          default: 0,  null: false
+    t.string   "seo_name",                                default: "", null: false
+    t.text     "description"
+    t.decimal  "added",          precision: 10, scale: 0, default: 0,  null: false
+    t.decimal  "lang_type",      precision: 10, scale: 0, default: 0,  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
