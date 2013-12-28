@@ -43,9 +43,12 @@
     .tag-sites
       -if !@unlogin_tags.blank?
         -@unlogin_tags.each do |tag|
+          br
           ul class="tagSitesUi list-inline"
             li class="tagSitesLi"
+              |[
               =tag.name
+              |]
               -sites = tag.sites.limit(6)
               -sites.each do |site|
                 li class="tagSitesLi"

@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+  has_many  :link_site_users
+  has_many  :sites, through: :link_site_users
+
+  has_many  :link_tag_users
+  has_many  :tags, through: :link_tag_users
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
