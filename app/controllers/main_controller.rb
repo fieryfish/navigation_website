@@ -24,4 +24,15 @@ class MainController < ApplicationController
     render 'index' 
 
   end
+
+  def show
+    p params
+
+    p 1111111
+    p "show" 
+    respond_to do |format|
+      format.json { render json: "1: 223"}
+    end
+  end
+
 end

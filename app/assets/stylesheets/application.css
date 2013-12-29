@@ -26,7 +26,7 @@
     }
 }
 #content .container{
-  border-color: #737070;
+  border-color: #CCCCCC; /* side vertical line */
   border-style: solid;
   border-left-width: 1px;
   border-right-width: 1px;

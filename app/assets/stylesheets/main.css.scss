@@ -26,6 +26,7 @@
   border-style: groove;
   width: 800px;
 }
+
 .tagSitesLi{
   margin-top: 0px;
   margin-bottom: 0px;
@@ -33,4 +34,15 @@
   padding-bottom: 0px;
   width: 100px;
   float: left
+}
+
+#content a{
+color: #000000;
+}
+#content a:hover{
+  color: #336699;
+}
+.tagOfSites{
+  color: #8C489F;
+  float: left;
 }

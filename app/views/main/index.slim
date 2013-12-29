@@ -28,13 +28,14 @@
           -(0..6).each do |num|
             -site = @main_sites[num+7*line_num]
             li class="sitesLi"
-              a<> href=site.url =site.name_chn
+              a<> href= standardise_url(site.url) =site.name_chn
+              
 
       ul class="list-inline"
         -(0..(left_sites_num-1)).each do |num|
           -site = @main_sites[num+7*line_number]
           li class="sitesLi"
-            a> href=site.url =site.name_chn
+            a> href=standardise_url(site.url) =site.name_chn
             /a href= =site.name_chn
         #clear-float
 
@@ -45,13 +46,13 @@
         -@unlogin_tags.each do |tag|
           br
           ul class="tagSitesUi list-inline"
-            li class="tagSitesLi"
+            li class="tagSitesLi tagOfSites"
               |[
               =tag.name
               |]
               -sites = tag.sites.limit(6)
               -sites.each do |site|
                 li class="tagSitesLi"
-                  a href=site.url =site.name_chn
+                  a href=standardise_url(site.url) =site.name_chn
 
             #clear-float
