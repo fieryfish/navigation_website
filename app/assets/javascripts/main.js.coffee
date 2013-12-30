@@ -40,12 +40,13 @@ jQuery ->
   #$("#asd").load(
     #"/main/show","#{$("#asd")}= #{$("#asd").show()}"
   #)
-  $.ajax
-    url: '/main/show',
-    data:
-      name: "John"
-    dataType: "json"
-    type: 'GET',
-    success: (data) ->
-      alert(data)
-      #console.log(data)
+  #
+  #$.ajax
+    #url: '/main/show',
+    #data:
+      #name: "John"
+    #dataType: "json"
+    #type: 'GET',
+    #success: (data) ->
+      #alert(data)
+      ##console.log(data)
