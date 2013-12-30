@@ -1,54 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>seen_网站导航</title>
+  <title>SeeN_智能网站导航</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav class="navbar navbar-default" role="navigation">
+  <nav class="navbar navbar-default " role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">Seen上网导航</a>
+        <a class="navbar-brand" href="#"><%= t('.website_name')%></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a>想要自定义自己的页面？请选择</a></li>
+        <ul id="login" class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
-            Logged in as <strong><%= current_user.email %></strong>.
-            <li><%= link_to '编辑资料', edit_user_registration_path %></li>
-            <li><%= link_to "退出", destroy_user_session_path, method: :delete %></li>
+            <li class="dropdown">
+              <a data-toggle="dropdown" role="button" href="#">
+                <%= current_user.username if current_user.username.present?%>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li><%= link_to '编辑资料', edit_user_registration_path %></li>
+                <li><%= link_to "退出", destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </li>
           <% else %>
+            <li><a>想要自定义自己的页面？请选择</a></li>
             <li><%= link_to "创建", new_user_registration_path, :class => 'navbar-link' %></li>
             <li><%= link_to "登陆", new_user_session_path %></li>
           <% end %>
         </ul>
 
-        <%=form_tag main_index_path, method: "get",class: "navbar-form", role: "search" do %>
-          <div class="form-group">
-            <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "搜索网站或标签"%>
-          </div>
-          <%= submit_tag "Search", class: "btn btn-default"%>
-        <% end %>
-      </div>
+        <div>
+          <%=form_tag main_index_path, method: "get", id: "nav-search", class: "navbar-form navbar-left", role: "search" do %>
+            <div class="form-group">
+              <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "搜索网站或标签", size: "25"%>
+            </div>
+            <%= submit_tag "搜索", class: "btn btn-default"%>
+          <% end %>
+        </div>
     </div>
   </nav>
-  <% %>
 
-  <% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-  <% end %>
+  <div id="main">
+    <div id="content">
+    <% if flash[:notice] || flash[:notice]%>
+      <div class="alert alert-warning fade in">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
 
-  <% if flash[:alert] %>
-    <p id="notice"><%= flash[:alert] %></p>
-  <% end %>
-
-  <%= yield %>
+    <%= yield %>
+    </div>
+  </div>
 
 </body>
 </html>
-        <%= link_to "Sign up", new_user_registration_path %> |
