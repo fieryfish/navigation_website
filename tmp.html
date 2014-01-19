@@ -1,0 +1,27 @@
+#nav search input
+            <div class="form-group input-wrapper nav-search">
+              <%= text_field_tag :search, params[:search], class: "form-control nav-search", placeholder: "搜索网站或标签", size: "35"%>
+              <span class="glyphicon glyphicon-search">aaa</span>
+            </div>
+              <%= submit_tag "搜索", class: "btn btn-default nav-search"%>
+
+
+
+/ul class="list-inline"/
+
+# nav of the sites
+  .container
+    .sites
+      -left_sites_num = @main_sites.size % 7
+      /Extra line not include 40 -> 5
+      -line_number = ((@main_sites.size-1)/7)
+      -line_number.times do |line_num|
+        ul class="list-inline"
+          -(0..6).each do |num|
+            -site = @main_sites[num+7*line_num]
+            li class="tagSitesLi"
+              =image_tag "icons/"+site.name_origin+".png", class: :"nav-sites-images"
+              a.nav-sites-tag href= "#" =site.tags.first.name
+              a.nav-sites-name<> href= standardise_url(site.url) =site.name
+          #clear-float
+

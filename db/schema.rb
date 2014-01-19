@@ -42,8 +42,9 @@ ActiveRecord::Schema.define(version: 20131217155630) do
   end
 
   create_table "sites", force: true do |t|
-    t.string   "name_chn",                                default: "", null: false
+    t.string   "name",                                    default: "", null: false
     t.string   "name_eng",                                default: "", null: false
+    t.string   "name_origin",                             default: "", null: false
     t.string   "url",                                     default: "", null: false
     t.integer  "publish_status",                          default: 0,  null: false
     t.string   "seo_name",                                default: "", null: false

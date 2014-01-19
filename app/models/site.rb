@@ -6,7 +6,15 @@ class Site < ActiveRecord::Base
   has_many  :users, through: :link_site_users
 
   validates :url, uniqueness: true
+  after_create :add_name_origin_field
   searchable do
-    text :name_chn, :name_eng
+    text :name, :name_eng
+  end
+
+  def add_name_origin_field             #name_origin should be downcase
+    if self.name_origin.blank?
+      self.name_origin = name_eng.to_s.strip.downcase
+      self.save
+    end
   end
 end

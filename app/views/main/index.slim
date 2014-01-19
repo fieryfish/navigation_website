@@ -17,42 +17,48 @@
       button type="submit" class="btn btn-default" 谷歌搜索
       /input type="submit" value="Google Search"
 
+  .br
+
   / websites list
   .container
     .sites
       -left_sites_num = @main_sites.size % 7
       /Extra line not include 40 -> 5
       -line_number = ((@main_sites.size-1)/7)
-      -line_number.times do |line_num|
-        ul class="list-inline"
+      .row
+        -line_number.times do |line_num|
           -(0..6).each do |num|
             -site = @main_sites[num+7*line_num]
-            li class="sitesLi"
-              a<> href= standardise_url(site.url) =site.name_chn
+            .col-md-2
+              =image_tag "icons/"+site.name_origin+".png", class: :"nav-sites-images"
+              a.nav-sites-tag href= "#" =site.tags.first.name
+              a.nav-sites-name<> href= standardise_url(site.url) =site.name
               
 
-      ul class="list-inline"
-        -(0..(left_sites_num-1)).each do |num|
-          -site = @main_sites[num+7*line_number]
-          li class="sitesLi"
-            a> href=standardise_url(site.url) =site.name_chn
-            /a href= =site.name_chn
-        #clear-float
+          -(0..(left_sites_num-1)).each do |num|
+            -site = @main_sites[num+7*line_number]
+            .col-md-2
+              =image_tag "icons/"+site.name_origin+".png", class: :"nav-sites-images"
+              a.nav-sites-tag href= "#" =site.tags.first.name
+              a.nav-sites-name<> href= standardise_url(site.url) =site.name
 
+    .br
           / tag with sites
   .container
     .tag-sites
       -if !@unlogin_tags.blank?
+        ul class="tagSitesUi list-inline"
+          li class="tagSitesLi tagOfSites"
+            标签
         -@unlogin_tags.each do |tag|
-          br
           ul class="tagSitesUi list-inline"
             li class="tagSitesLi tagOfSites"
               |[
               =tag.name
               |]
-              -sites = tag.sites.limit(6)
+              -sites = tag.sites.limit(7)
               -sites.each do |site|
                 li class="tagSitesLi"
-                  a href=standardise_url(site.url) =site.name_chn
+                  a href=standardise_url(site.url) =site.name
 
             #clear-float

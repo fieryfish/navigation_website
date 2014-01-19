@@ -16,9 +16,9 @@ class SearchSuggestionController < ApplicationController
       end
 
       @sites = @search.results
-      extracted_site_chn_names = @sites[0..6].map(&:name_chn)
+      extracted_site_names = @sites[0..6].map(&:name)
 
-      autocomplete_result = extracted_tag_names + extracted_site_chn_names
+      autocomplete_result = extracted_tag_names + extracted_site_names
     end
 
     render :json => autocomplete_result
