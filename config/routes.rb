@@ -7,12 +7,15 @@ Nav::Application.routes.draw do
   scope '(:locale)' do
     root 'main#index'
     get 'main/index'
-    get 'main/show'
-    get 'main/update'
+    #get 'main/show'
+    #get 'main/update'
     #get 'search_suggestion/index'
     resources :search_suggestion do
     end
   end
+
+  resources :sites
+  resources :tags
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

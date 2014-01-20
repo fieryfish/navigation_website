@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   validates :username,
   :uniqueness => { :case_sensitive => false }
 
+  BlankUserId = 0
 
   # configure user
   after_create do |user|

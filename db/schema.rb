@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131217155630) do
+ActiveRecord::Schema.define(version: 20140119231644) do
 
   create_table "link_site_users", force: true do |t|
     t.integer  "user_id",        default: 0, null: false
@@ -58,6 +58,20 @@ ActiveRecord::Schema.define(version: 20131217155630) do
   create_table "tags", force: true do |t|
     t.string   "name",       default: "", null: false
     t.integer  "sub_tag_id", default: 0,  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_make_sites", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "site_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_make_tags", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
