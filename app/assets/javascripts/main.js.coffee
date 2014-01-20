@@ -5,6 +5,7 @@ jQuery ->
   #search form autocomplete of jquery ui
   $('#search').autocomplete
     source: "/search_suggestion"
+    #message用于取消提示,提示会导致页面乱掉
     messages: {
         noResults: '',
         results: () -> 

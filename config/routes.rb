@@ -10,10 +10,11 @@ Nav::Application.routes.draw do
     #get 'main/show'
     #get 'main/update'
     #get 'search_suggestion/index'
-    resources :search_suggestion do
-    end
   end
 
+  get 'search_suggestion/index'
+  #resources :search_suggestion do
+  #end
   resources :sites
   resources :tags
   

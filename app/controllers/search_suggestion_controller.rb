@@ -20,6 +20,8 @@ class SearchSuggestionController < ApplicationController
 
       autocomplete_result = extracted_tag_names + extracted_site_names
     end
+    p 11111111111111111111
+    p autocomplete_result
 
     render :json => autocomplete_result
   end

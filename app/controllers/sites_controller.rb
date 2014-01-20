@@ -3,7 +3,7 @@ class SitesController < ApplicationController
   end
 
   def new
-    @site = Tag.new
+    @site = Site.new
   end
 
   def destroy
@@ -14,16 +14,32 @@ class SitesController < ApplicationController
   end
 
   def create
-    @site = Tag.new(tag_params)
+    @site = Site.new(name: params[:name], description: params[:description], url: params[:url] )
+
+    tag_of_site = params[:tag_of_site]
+    add_to_my_site = params[:add_to_my_site]
+
+    Tag.find_or_create_by!(name: tag_of_site)
 
     respond_to do |format|
       if @site.save
         if @current_user.present?
-          UserMakeTags.create(site_id: @tag.id, user_id: @current_user.id)
+          if add_to_my_site
+            LinkSiteUser.create(site_id: @site.id, user_id: @current_user.id)
+            UserMakeSites.create(site_id: @site.id, user_id: @current_user.id)
+          else
+            UserMakeSites.create(site_id: @site.id, user_id: @current_user.id)
+          end
         else
-          UserMakeTags.create(site_id: @tag.id, user_id: User::BlankUserId)
+          if add_to_my_site
+            LinkSiteUser.create(site_id: @site.id, user_id: User::BlankUserId)
+            UserMakeSites.create(site_id: @site.id, user_id: User::BlankUserId)
+          else
+            UserMakeSites.create(site_id: @site.id, user_id: User::BlankUserId)
+          end
         end
-        format.html { redirect_to @site, notice: 'High score was succe    ssfully created.' }
+
+        format.html { redirect_to @site, notice: 'High score was successfully created.' }
       else
         format.html { render action: 'new' }
       end
