@@ -1,4 +1,6 @@
 Nav::Application.routes.draw do
+  resources :search_suggestions
+
   devise_for :users, :controllers => { :registrations => "registrations" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -12,7 +14,7 @@ Nav::Application.routes.draw do
     #get 'search_suggestion/index'
   end
 
-  get 'search_suggestion/index'
+  #get 'search_suggestion/index'
   #resources :search_suggestion do
   #end
   resources :sites

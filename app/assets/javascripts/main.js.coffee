@@ -4,14 +4,20 @@
 jQuery ->
   #search form autocomplete of jquery ui
   $('#search').autocomplete
-    source: "/search_suggestion"
+    source: "/search_suggestions"
     #message用于取消提示,提示会导致页面乱掉
     messages: {
         noResults: '',
         results: () -> 
     }
 
-
+  .data( "ui-autocomplete" )._renderItem = ( ul, item ) -> 
+    alert(item)
+    alert(item.name)
+    alert(item.url)
+    return $( "<li>" )
+      .append( "<a>" + item.name + "<br>" + item.url "</a>" )
+      .appendTo( ul )
   # alert msg of rails and bootstrap
   $(".alert").alert()
 
