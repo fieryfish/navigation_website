@@ -11,13 +11,13 @@ jQuery ->
         results: () -> 
     }
 
+  # change the drop-down list of the autocomplete of nav search
   .data( "ui-autocomplete" )._renderItem = ( ul, item ) -> 
-    alert(item)
-    alert(item.name)
-    alert(item.url)
-    return $( "<li>" )
-      .append( "<a>" + item.name + "<br>" + item.url "</a>" )
-      .appendTo( ul )
+    #alert(item)
+    #alert(item.name)
+    #alert(item.url)
+    return $("<li><a href="+item.url+ ">" + item.name+"</a></li>").appendTo(".ui-autocomplete")
+
   # alert msg of rails and bootstrap
   $(".alert").alert()
 

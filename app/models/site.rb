@@ -8,7 +8,9 @@ class Site < ActiveRecord::Base
   validates :url, uniqueness: true
   after_create :add_name_origin_field
   searchable do
-    text :name, :name_eng, :url
+    text :name, :as => :name_textp
+    #text :name_eng
+    #text :url
   end
 
   def add_name_origin_field             #name_origin should be downcase
