@@ -10,16 +10,18 @@ class MainController < ApplicationController
 
     end
 
-    @search = Tag.search do
-      fulltext params[:search]
-    end
+    #@search = Tag.search do
+      #fulltext params[:search]
+    #end
 
-    @tags = @search.results
+    #@tags = @search.results
 
-    @search = Site.search do
-      fulltext params[:search]
-    end
-    @sites = @search.results
+    #@search = Site.search do
+      #fulltext params[:search]
+    #end
+    #@sites = @search.results
+    p 2222222222222222
+    #p @sites
 
     render 'index' 
 

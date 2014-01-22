@@ -1,0 +1,32 @@
+h1
+  |New
+= form_tag(controller: "sites", action: "new") do
+  - if @site.errors.any?
+    .error_explanation
+      h2
+        = pluralize(@site.errors.count, "error")
+
+  ul
+    - @site.errors.full_messages.each do |msg|
+      li
+        = msg
+
+  #field
+    =label_tag :网站名称
+    =text_field_tag :name
+  #field
+    =label_tag "一句话描述(30字以内)"
+    =text_area_tag :description
+  #field
+    =label_tag "网址"
+    =text_field_tag "url", "http://"
+  #field
+    =label_tag :网站的标签
+    =text_field_tag :tag_of_site
+  #field
+    =label_tag "添加到'我的网站'(注册用户功能)"
+    =check_box_tag "add_to_my_site", nil, true
+
+  #actions
+    = submit_tag("提交")
+= link_to 'Back', main_index_path
