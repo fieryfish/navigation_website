@@ -19,13 +19,18 @@ class SitesController < ApplicationController
     tag_of_site = params[:tag_of_site]
     add_to_my_site = params[:add_to_my_site]
 
-    Tag.find_or_create_by!(name: tag_of_site)
+    tag = Tag.find_or_create_by!(name: tag_of_site)
+
 
     respond_to do |format|
       if @site.save
+        # save to the link table of tag and site
+        LinkTagSite.create(tag_id: tag.id, site_id: @site.id)
         if @current_user.present?
           if add_to_my_site
+            # show table of the nav
             LinkSiteUser.create(site_id: @site.id, user_id: @current_user.id)
+            # create table by user
             UserMakeSites.create(site_id: @site.id, user_id: @current_user.id)
           else
             UserMakeSites.create(site_id: @site.id, user_id: @current_user.id)

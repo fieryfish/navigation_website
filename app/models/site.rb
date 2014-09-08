@@ -6,7 +6,7 @@ class Site < ActiveRecord::Base
   has_many  :users, through: :link_site_users
 
   validates :url, uniqueness: true
-  after_create :add_name_origin_field
+  #after_create :add_name_origin_field
   searchable do
     text :name, :as => :name_textp
     #text :name_eng

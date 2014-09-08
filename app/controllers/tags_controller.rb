@@ -15,13 +15,21 @@ class TagsController < ApplicationController
 
   def create
     @tag = Tag.new(tag_params)
+    @site = Site.new(name: params[:site_name_of_tag], description: params[:site_description], url: params[:site_url] )
 
     respond_to do |format|
-      if @tag.save
+      if @tag.save && @site.save
+        LinkTagSite.create(tag_id: tag.id, site_id: @site.id)
         if @current_user.present?
           UserMakeTags.create(tag_id: @tag.id, user_id: @current_user.id)
+          UserMakeSites.create(site_id: @site.id, user_id: @current_user.id)
+          LinkSiteUser.create(site_id: @site.id, user_id: @current_user.id)
+          LinkTagUser.create(tag_id: @tag.id, user_id: @current_user.id)
         else
           UserMakeTags.create(tag_id: @tag.id, user_id: User::BlankUserId)
+          UserMakeSites.create(site_id: @site.id, user_id: User::BlankUserId)
+          LinkSiteUser.create(site_id: @site.id, user_id: User::BlankUserId)
+          LinkTagUser.create(tag_id: @tag.id, user_id: User::BlankUserId)
         end
         format.html { redirect_to @tag, notice: 'High score was succe    ssfully created.' }
       else

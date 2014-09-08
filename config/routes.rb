@@ -6,18 +6,19 @@ Nav::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  scope '(:locale)' do
+  #scope '(:locale)' do
     root 'main#index'
     get 'main/index'
+    resources :sites
     #get 'main/show'
     #get 'main/update'
     #get 'search_suggestion/index'
-  end
+  #end
 
   #get 'search_suggestion/index'
   #resources :search_suggestion do
   #end
-  resources :sites
+  #resources :sites
   resources :tags
   
   # Example of regular route:
